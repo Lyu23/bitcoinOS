@@ -337,6 +337,22 @@ export default function Stake() {
         const l = s.length
         return s.substring(0, 3) + "..." + s.substring(l - 3, l);
     }
+    function test() {
+        console.log("goods")
+        osBackend.my_wallets().then((value: WalletInfo[]) => {
+            console.log(value)
+        })
+        walletBackend.list_staking().then((v: StakingRecords) => {
+            if ('Ok' in v) {
+                const records: StakingRecord[] = v.Ok
+                let r: bigint = 0n
+                records.map((v) => {
+                    r = r + (v.sent_amount)
+                })
+                console.log(Number(r) * 1.0 / btc)
+            }
+        })
+    }
     return (
         <>
             <Flex direction='column' ml='20%' >
@@ -368,6 +384,7 @@ export default function Stake() {
                         Users: {users}
                     </Text>
                 </Flex>
+                <Button onClick={test}>test</Button>
                 <Box mt={2} boxShadow="lg" border="1px" borderColor="gray.200" borderRadius="md" mr="30%" p={3} zIndex={4}>
 
                     <Flex width='100%' mb={4}>
@@ -380,7 +397,7 @@ export default function Stake() {
                                     }
                                 </Select>
                             </Flex>
-                            {wallet.length >0 && <Text fontSize='sm' mt="2">{(wallet)}</Text>}
+                            {wallet.length > 0 && <Text fontSize='sm' mt="2">{(wallet)}</Text>}
                         </Flex>
                         <Button
                             bgColor="orange.400"

@@ -30,8 +30,8 @@ import {
 } from 'react-icons/bs'
 import { useInternetIdentity } from "ic-use-internet-identity";
 // import UserStore from "../store/index"
-import {LoginButton}  from "./LoginButton"
- 
+import { LoginButton } from "./LoginButton"
+
 const Header = () => {
   const { identity } = useInternetIdentity();
   // const { principal, setPrincipal } = UserStore();
@@ -42,7 +42,7 @@ const Header = () => {
   //   }else{
   //     setPrincipal(identity.getPrincipal().toString());
   //   }
-      
+
   // }, [identity]);
 
   // Get the principal from the backend when an identity is available
@@ -74,7 +74,7 @@ const Header = () => {
       </Flex>
       <Flex align="center" ml="10%" >
         <HStack gap='5' display={{ base: 'none', md: 'flex' }}>
-          <ChakraLink as={ReactRouterLink} _hover={{ textDecoration: "none" }}  to='/'>
+          <ChakraLink as={ReactRouterLink} _hover={{ textDecoration: "none" }} to='/'>
             <Heading as="h1" size="lg" letterSpacing={"tighter"}>
               osBTC
             </Heading>
@@ -157,7 +157,7 @@ const Header = () => {
         mr={5}
         ml={5}
       >
-         <LoginButton ></LoginButton>
+        <LoginButton ></LoginButton>
       </Box>
     </Flex>
   );
